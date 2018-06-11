@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/users', UserController.list);
 router.post('/user/create', UserController.create);
 
 module.exports = router;

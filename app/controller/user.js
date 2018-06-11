@@ -19,3 +19,11 @@ module.exports.create =  function (req, res) {
         }
     })
 };
+
+module.exports.list = function(req, res){
+  return User.find({}, function (err, users) {
+      if(err) throw err;
+      return res.json(users);
+
+  })
+};
