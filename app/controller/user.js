@@ -29,10 +29,23 @@ module.exports.list = function(req, res){
 };
 
 module.exports.update = function(req, res){
-  return User.findByIdAndUpdate(req.body.id, req.body, function (err, user) {
+    var options = { new : true};
+  return User.findByIdAndUpdate(req.body.id, req.body, options, function (err, user) {
       if(err) return res.status(400).json(err);
       if(user){
-          return res.json('Updated successfully');
+          return res.json(user);
+      }else{
+          return res.status(400).json('User not found');
+      }
+  })
+};
+
+module.exports.remove = function(req, res){
+  return User.findByIdAndDelete(req.body.id, function (err, user) {
+      console.log(err, user);
+      if(err) return res.status(400).json(err);
+      if(user){
+          return res.json('User deleted successfully');
       }else{
           return res.status(400).json('User not found');
       }
