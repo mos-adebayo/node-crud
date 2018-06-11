@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/users', UserController.list);
+router.put('/user/update', UserController.update);
 router.post('/user/create', UserController.create);
 
 module.exports = router;

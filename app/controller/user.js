@@ -27,3 +27,14 @@ module.exports.list = function(req, res){
 
   })
 };
+
+module.exports.update = function(req, res){
+  return User.findByIdAndUpdate(req.body.id, req.body, function (err, user) {
+      if(err) return res.status(400).json(err);
+      if(user){
+          return res.json('Updated successfully');
+      }else{
+          return res.status(400).json('User not found');
+      }
+  })
+};
