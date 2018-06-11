@@ -17,10 +17,11 @@ var userSchema = new Schema({
 //custom method for schema
 userSchema.methods.salute = function () {
     if(this.gender === 'male'){
-        return 'Mr.'
+        this.salutation = 'Mr.'
     }else{
-        return (this.maritalStatus === 'single' ? 'Miss' : 'Mrs.');
+        this.salutation = (this.maritalStatus === 'single' ? 'Miss' : 'Mrs.');
     }
+    return this;
 };
 
 //Create a model for the user
