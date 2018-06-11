@@ -10,6 +10,6 @@ router.get('/', function(req, res, next) {
 router.get('/users', UserController.list);
 router.put('/user/update', UserController.update);
 router.post('/user/create', UserController.create);
-router.post('/user/remove', UserController.remove);
+router.delete('/user/remove/:id', UserController.remove);
 
 module.exports = router;

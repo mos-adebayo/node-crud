@@ -41,7 +41,7 @@ module.exports.update = function(req, res){
 };
 
 module.exports.remove = function(req, res){
-  return User.findByIdAndDelete(req.body.id, function (err, user) {
+  return User.findByIdAndDelete(req.params.id, function (err, user) {
       console.log(err, user);
       if(err) return res.status(400).json(err);
       if(user){
